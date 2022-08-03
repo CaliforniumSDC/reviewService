@@ -1,6 +1,6 @@
 const mongo = require('mongodb').MongoClient;
 const { ObjectID } = require('mongodb');
-var url = 'mongodb://localhost:27017';
+var url = process.env.URL;
 var reviews;
 
 mongo.connect(url, (err, client) => {
@@ -9,7 +9,7 @@ mongo.connect(url, (err, client) => {
     return;
   }
   console.log('Connected successfully to server');
-  reviews = client.db('reviews').collection('everything2');
+  reviews = client.db(process.env.DB_NAME).collection('everything2');
 });
 
 
